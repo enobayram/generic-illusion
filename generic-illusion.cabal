@@ -1,0 +1,61 @@
+cabal-version: 2.0
+name: generic-illusion
+version: 0.0.1
+license: MIT
+license-file: LICENSE
+copyright: 2019 Enis Bayramoglu
+maintainer: enisbayramoglu@gmail.com
+author: Enis Bayramoglu
+tested-with: ghc ==8.4.4
+homepage: https://github.com/enobayram/generic-illusion
+bug-reports: https://github.com/enobayram/generic-illusion/issues
+synopsis: Build generic representations of combinations of types
+description:
+    Build generic representations of combinations of types
+category: Data
+build-type: Simple
+extra-doc-files: README.md
+                 CHANGELOG.md
+
+source-repository head
+    type: git
+    location: https://github.com/enobayram/generic-illusion.git
+
+library
+    exposed-modules:
+        GenericIllusion
+    hs-source-dirs: src
+    default-language: Haskell2010
+    ghc-options: -Wall -Wincomplete-uni-patterns
+                 -Wincomplete-record-updates -Wcompat -Widentities
+                 -Wredundant-constraints -fhide-source-paths -Wmissing-export-lists
+                 -Wpartial-fields
+    build-depends:
+        base <=4.12.1.0
+
+test-suite generic-illusion-test
+    type: exitcode-stdio-1.0
+    main-is: Spec.hs
+    hs-source-dirs: test
+    default-language: Haskell2010
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+                 -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat
+                 -Widentities -Wredundant-constraints -fhide-source-paths
+                 -Wmissing-export-lists -Wpartial-fields
+    build-depends:
+        base <=4.12.1.0,
+        generic-illusion -any
+
+benchmark generic-illusion-benchmark
+    type: exitcode-stdio-1.0
+    main-is: Main.hs
+    hs-source-dirs: benchmark
+    default-language: Haskell2010
+    ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
+                 -Wincomplete-uni-patterns -Wincomplete-record-updates -Wcompat
+                 -Widentities -Wredundant-constraints -fhide-source-paths
+                 -Wmissing-export-lists -Wpartial-fields
+    build-depends:
+        base <=4.12.1.0,
+        gauge -any,
+        generic-illusion -any
