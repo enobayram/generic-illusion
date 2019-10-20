@@ -44,7 +44,10 @@ test-suite generic-illusion-test
                  -Wmissing-export-lists -Wpartial-fields
     build-depends:
         base <=4.12.1.0,
-        generic-illusion -any
+        generic-illusion -any,
+        aeson -any,
+        tasty,
+        tasty-hunit
 
 benchmark generic-illusion-benchmark
     type: exitcode-stdio-1.0
